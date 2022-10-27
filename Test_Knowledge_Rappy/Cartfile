@@ -1,0 +1,4 @@
+github "ReactiveX/RxSwift"
+github "RxSwiftCommunity/RxAlamofire"
+github "airbnb/lottie-ios" "master"
+github "ashleymills/Reachability.swift"

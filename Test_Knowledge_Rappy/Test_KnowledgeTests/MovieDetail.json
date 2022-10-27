@@ -1,0 +1,81 @@
+{
+    "adult": false,
+    "backdrop_path": "/qwgGtdlLMKYvT2tV8hLY22syRHN.jpg",
+    "belongs_to_collection": {
+        "id": 724848,
+        "name": "Shazam - Colección",
+        "poster_path": "/5C3zeyCrwLI2xqbGOdtRPTqJMjj.jpg",
+        "backdrop_path": null
+    },
+    "budget": 80000000,
+    "genres": [
+        {
+            "id": 28,
+            "name": "Acción"
+        },
+        {
+            "id": 35,
+            "name": "Comedia"
+        },
+        {
+            "id": 14,
+            "name": "Fantasía"
+        }
+    ],
+    "homepage": "",
+    "id": 287947,
+    "imdb_id": "tt0448115",
+    "original_language": "en",
+    "original_title": "Shazam!",
+    "overview": "Todos llevamos un superhéroe dentro, solo se necesita un poco de magia para sacarlo a la luz. Cuando Billy Batson, un niño de acogida de 14 años que ha crecido en las calles, grita la palabra 'SHAZAM!' se convierte en el Superhéroe adulto Shazam, por cortesía de un antiguo mago. Dentro de un cuerpo musculoso y divino, Shazam esconde un corazón de niño. Pero lo mejor es que en esta versión de adulto consigue realizar todo lo que le gustaría hacer a cualquier adolescente con superpoderes: ¡divertirse con ellos! ¿Volar? ¿Tener visión de rayos X? ¿Disparar un rayo con las manos? ¿Saltarse el examen de sociales? Shazam va a poner a prueba los límites de sus habilidades con la inconsciencia propia de un niño. Pero necesitará dominar rápidamente esos poderes para luchar contra las letales fuerzas del mal que controla el Dr. Thaddeus Sivana.",
+    "popularity": 214.587,
+    "poster_path": "/4f5Rz8uYpcTvo1hHKcQRSaay0ek.jpg",
+    "production_companies": [
+        {
+            "id": 12,
+            "logo_path": "/iaYpEp3LQmb8AfAtmTvpqd4149c.png",
+            "name": "New Line Cinema",
+            "origin_country": "US"
+        },
+        {
+            "id": 11565,
+            "logo_path": null,
+            "name": "The Safran Company",
+            "origin_country": "US"
+        },
+        {
+            "id": 73669,
+            "logo_path": "/7tmSGstK3KwgcDIuBYLTAayjit9.png",
+            "name": "Seven Bucks Productions",
+            "origin_country": "US"
+        },
+        {
+            "id": 128064,
+            "logo_path": "/13F3Jf7EFAcREU0xzZqJnVnyGXu.png",
+            "name": "DC Films",
+            "origin_country": "US"
+        }
+    ],
+    "production_countries": [
+        {
+            "iso_3166_1": "US",
+            "name": "United States of America"
+        }
+    ],
+    "release_date": "2019-03-29",
+    "revenue": 366080049,
+    "runtime": 132,
+    "spoken_languages": [
+        {
+            "english_name": "English",
+            "iso_639_1": "en",
+            "name": "English"
+        }
+    ],
+    "status": "Released",
+    "tagline": "Di la palabra mágica.",
+    "title": "¡Shazam!",
+    "video": false,
+    "vote_average": 7.047,
+    "vote_count": 7952
+}
