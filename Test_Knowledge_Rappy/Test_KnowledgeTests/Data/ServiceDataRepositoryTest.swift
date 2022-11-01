@@ -8,13 +8,11 @@
 import Foundation
 @testable import Test_Knowledge
 
-/**
- MockHTTPClientTest
- Esta clase es una copia o Mock del servicio de consumo rest  donde se implementa el protocolo `HTTPClientProtocol` implementado en la clase  `HttpClient`
- 
- - important: Acá se recibe un nombre de archivo para localizar el JSON que nos va a servir como simulador de respuesta del servicio`.
- */
-final class MockRestApi: ServiceRepository, Mockable {
+final class ServiceDataRepositoryTest: ServiceRepository, RestApiImplMockable {
+    
+    func downloadImage() -> String {
+        return loadImage(filename: filename)
+    }
     
     func getMovies(listId: String, language: String) -> RxSwift.Observable<MoviesEntity.Movies> {
         return loadJSON(filename: filename)

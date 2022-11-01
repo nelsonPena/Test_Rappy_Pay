@@ -9,7 +9,7 @@ import XCTest
 import RxSwift
 @testable import Test_Knowledge
 
-final class Test_KnowledgeTests: XCTestCase {
+final class MoviesApiTest: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -22,7 +22,7 @@ final class Test_KnowledgeTests: XCTestCase {
     // En esta prueba unitaria se ejecuta el listado de publicaciones inicial, simulando un servidor de Internet local, leyendo un archivo JSON previamente cargado con la estructura exacta a la del consumo.
     func testMovieList() async throws  {
         let disposeBag = DisposeBag()
-        MockRestApi(filename: "MoviesList")
+        ServiceDataRepositoryTest(filename: "MoviesList")
             .getMovies(listId: "", language: "")
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { moviesList in
@@ -43,7 +43,7 @@ final class Test_KnowledgeTests: XCTestCase {
     
     func testMovieDetail() async throws  {
         let disposeBag = DisposeBag()
-        MockRestApi(filename: "MovieDetail")
+        ServiceDataRepositoryTest(filename: "MovieDetail")
             .getMoviesDetail(movieId: "", language: "")
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { moviesList in
@@ -64,7 +64,7 @@ final class Test_KnowledgeTests: XCTestCase {
     
     func testMovieVideoList() async throws  {
         let disposeBag = DisposeBag()
-        MockRestApi(filename: "MoviesVideosList")
+        ServiceDataRepositoryTest(filename: "MoviesVideosList")
             .getVideosMovie(movieId: "", language: "")
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { videosList in
@@ -82,5 +82,9 @@ final class Test_KnowledgeTests: XCTestCase {
             .disposed(by: disposeBag)
         
     }
+    
+    //MARK: MovieDetailPresenter
+    
+    
     
 }

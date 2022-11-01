@@ -18,6 +18,6 @@ public enum VideosModel {
             self.results = results
         }
         
-        public let results: [Results]
+        public let results: [Results]?
     }
 }

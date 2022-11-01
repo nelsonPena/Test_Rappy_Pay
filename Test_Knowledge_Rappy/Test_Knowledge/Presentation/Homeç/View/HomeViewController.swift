@@ -15,7 +15,10 @@ extension HomeViewController {
     static func build() -> UIViewController {
         let homeViewController = HomeViewController.instantiate()
         let router = HomeRouter(currentViewController: homeViewController)
-        let presenter = HomePresenter(view: homeViewController, router: router)
+        let homeInteractor = HomeInteractor(repository: ServiceDataRepository.sharedInstance)
+        let presenter = HomePresenter(view: homeViewController,
+                                      router: router,
+                                      interactor: homeInteractor)
         homeViewController.presenter = presenter
         return homeViewController
     }

@@ -53,7 +53,6 @@ enum ApiRouter: URLRequestConvertible {
             return (Constants.baseUrl + "/4/list/{listNumber}").replacingOccurrences(of: "{listNumber}", with: listId)
         case .getMoviesDetail(let movieId, _):
             return (Constants.baseUrl + "/3/movie/{movieId}").replacingOccurrences(of: "{movieId}", with: movieId)
-                .replacingOccurrences(of: "{apiKey}", with: Constants.apiKey)
         case .getVideosMovie(movieId: let movieId, language: _):
             return (Constants.baseUrl + "/3/movie/{movieId}/videos").replacingOccurrences(of: "{movieId}", with: movieId)
         }

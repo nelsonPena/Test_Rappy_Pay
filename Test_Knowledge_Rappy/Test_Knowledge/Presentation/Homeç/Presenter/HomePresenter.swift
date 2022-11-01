@@ -23,7 +23,7 @@ protocol HomePresenterProtocol: AnyObject {
 public class HomePresenter {
     internal let router: HomeRouterProtocol
     internal unowned let view: HomeViewControllerProtocol
-    internal let interactor = HomeInteractor(repository: ServiceDataRepository.sharedInstance)
+    internal let interactor: HomeInteractorProtocol
     private let disposeBag = DisposeBag()
     var upcomingMovies: MoviesModel.Movies?
     var topRantedMovies: MoviesModel.Movies?
@@ -31,9 +31,12 @@ public class HomePresenter {
     private var upcomingMoviesResults: [MoviesModel.Results] = []
     private var topRantedMoviesResults: [MoviesModel.Results] = []
     
-    init (view: HomeViewControllerProtocol, router: HomeRouterProtocol) {
+    init (view: HomeViewControllerProtocol,
+          router: HomeRouterProtocol,
+          interactor: HomeInteractorProtocol) {
         self.view = view
         self.router = router
+        self.interactor = interactor
     }
 }
 

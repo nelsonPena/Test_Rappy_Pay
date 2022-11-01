@@ -11,9 +11,11 @@ import Lottie
 extension MoviewDetailViewController {
     static func build(movieDetailViewData: MovieDetailViewData) -> UIViewController {
         let moviewDetailViewController = MoviewDetailViewController.instantiate()
+        let movieDetailInteractor = MovieDetailInteractor(repository: ServiceDataRepository.sharedInstance)
         let presenter = MovieDetailPresenter(
             view: moviewDetailViewController,
-            movieDetailViewData: movieDetailViewData
+            movieDetailViewData: movieDetailViewData,
+            interactor: movieDetailInteractor
         )
         moviewDetailViewController.presenter = presenter
         return moviewDetailViewController
@@ -21,7 +23,10 @@ extension MoviewDetailViewController {
 }
 
 protocol MoviewDetailViewControllerProtocol: AnyObject  {
-    func loadMovieDetailData(movieDetail: MovieDetailModel)
+    func displayDetailData(viewModel: DisplayDetail.ViewModelDetail)
+    func displayVoteAverage(viewModel: DisplayDetail.ViewModelVoteAverage)
+    func displayReleaseDate(viewModel: DisplayDetail.ViewModelReleaseDate)
+    func displayImageBackground(viewModel: DisplayDetail.ViewModelImageBackground)
     func displayLoader()
     func hideLoader()
 }
@@ -44,7 +49,7 @@ class MoviewDetailViewController: UIViewController, Storyboarded {
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet weak var view1: UIView!
     @IBOutlet weak var seeTrailerButton: UIButton!
-   
+    
     internal var presenter: MovieDetailPresenter?
     var animationView = LottieAnimationView()
     
@@ -86,13 +91,10 @@ class MoviewDetailViewController: UIViewController, Storyboarded {
     }
     
     @objc func showTrailerAction(sender: UIButton) {
-        guard let results = presenter?.getVideosMovies().results else {
-            return
-        }
-        if results.count > 0 {
+        if let keyVideo = presenter?.getKeyVideo() {
             let trailerController = TrailerViewController.build()
             trailerController.modalPresentationStyle = .popover
-            trailerController.keyVideo = results[0].key
+            trailerController.keyVideo = keyVideo
             navigationController?.present(trailerController, animated: true)
         }
     }
@@ -100,6 +102,18 @@ class MoviewDetailViewController: UIViewController, Storyboarded {
 }
 
 extension MoviewDetailViewController: MoviewDetailViewControllerProtocol {
+    func displayImageBackground(viewModel: DisplayDetail.ViewModelImageBackground) {
+        self.imageBackground.image = viewModel.image
+    }
+    
+    func displayVoteAverage(viewModel: DisplayDetail.ViewModelVoteAverage) {
+        averageLabel.text = viewModel.voteAverage
+    }
+    
+    func displayReleaseDate(viewModel: DisplayDetail.ViewModelReleaseDate) {
+        yearLabel.text = viewModel.year
+    }
+    
     func displayLoader() {
         effectView.isHidden = false
         animationView = loaderView.displayLoader()
@@ -110,21 +124,13 @@ extension MoviewDetailViewController: MoviewDetailViewControllerProtocol {
         loaderView.hideLoader(animationView: animationView)
     }
     
-   
-    func loadMovieDetailData(movieDetail: MovieDetailModel) {
-        tittleLabel.text = movieDetail.title
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yy"
-        let yearString = dateFormatter.string(from: movieDetail.releaseDate.toDate())
-        yearLabel.text = yearString
-        languageLabel.text = movieDetail.originalLanguage
-        let formatter = NumberFormatter()
-        formatter.maximumFractionDigits = 2
-        formatter.minimumFractionDigits = 0
-        averageLabel.text = formatter.string(for: movieDetail.voteAverage) ?? "?"
-        taglineLabel.text = movieDetail.tagline
-        overviewLabel.text = movieDetail.overview
-        self.imageBackground.downloaded(from: (Constants.baseUrlImage + movieDetail.posterPath), useLoading: false)
+    func displayDetailData(viewModel: DisplayDetail.ViewModelDetail) {
+        tittleLabel.text = viewModel.movieDetail.title
+        languageLabel.text = viewModel.movieDetail.originalLanguage
+        taglineLabel.text = viewModel.movieDetail.tagline
+        overviewLabel.text = viewModel.movieDetail.overview
+        
     }
+    
     
 }

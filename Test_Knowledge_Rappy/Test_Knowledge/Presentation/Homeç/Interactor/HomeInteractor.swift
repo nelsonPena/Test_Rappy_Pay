@@ -16,7 +16,14 @@ public protocol HomeInteractorProtocol {
     func containsRecordsInFetchRequest() -> Bool
 }
 
-public class HomeInteractor: Interactor, HomeInteractorProtocol {
+public class HomeInteractor: Interactor {
+    public override init(repository: Any) {
+        super.init(repository: repository)
+    }
+}
+                             
+
+extension HomeInteractor: HomeInteractorProtocol {
     
     public func getListMoviesServer(by listId: String, language: String) -> Observable<MoviesModel.Movies> {
         return (repository as! ServiceRepository).getMovies(listId: listId, language: language).map{$0.mapper()}

@@ -9,7 +9,7 @@ import Foundation
 
 class DownloadImage{
     class func downloaded(from link: String,_ completion: @escaping (String) -> Void) {
-        guard let url = URL(string: "https://image.tmdb.org/t/p/w500" + link) else { return }
+        guard let url = URL(string: Constants.baseUrlImage + link) else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard
                 let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
