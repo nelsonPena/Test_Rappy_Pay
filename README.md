@@ -2,6 +2,8 @@
 
 El proyecto está desarrollado en arquitectura VIPER, contiene una capa de Data donde están los llamados a a las API, una capa dominio donde está la interacción entre el la respuesta del servicio y el interactor y la capa presentador donde está toda la lógica del controlador y vistas.
 
+_Las dependencias de Proyecto no están incluidas pero se utilizó Carthage._
+
 ##### Por: 
 
 _Nelson Peña_
